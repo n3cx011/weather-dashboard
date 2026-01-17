@@ -1,0 +1,53 @@
+const searchBtn = document.getElementById('search-btn');
+const cityInput = document.getElementById('city-input');
+
+searchBtn.addEventListener('click', handleSearch);
+cityInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSearch(); });
+
+async function handleSearch() {
+    const city = cityInput.value.trim();
+    if (!city) return;
+
+    try {
+        // Fetching from OUR backend, not OpenWeather directly
+        const response = await fetch(`/api/weather?city=${city}`);
+        if (!response.ok) throw new Error('City not found');
+        
+        const data = await response.json();
+        displayCurrent(data.current);
+        displayForecast(data.forecast);
+    } catch (error) {
+        alert(error.message);
+    }
+}
+
+function displayCurrent(data) {
+    const weatherDiv = document.getElementById('current-weather');
+    weatherDiv.innerHTML = `
+        <h2>${data.name}, ${data.sys.country}</h2>
+        <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png">
+        <p style="font-size: 2rem; font-weight: bold;">${Math.round(data.main.temp)}°C</p>
+        <p>${data.weather[0].description}</p>
+        <p>Humidity: ${data.main.humidity}% | Wind: ${data.wind.speed} m/s</p>
+    `;
+}
+
+function displayForecast(data) {
+    const forecastDiv = document.getElementById('forecast');
+    document.getElementById('forecast-title').style.display = 'block';
+    forecastDiv.innerHTML = '';
+
+    // Filter for 12:00 PM readings
+    const dailyData = data.list.filter(item => item.dt_txt.includes("12:00:00"));
+
+    dailyData.forEach(day => {
+        const date = new Date(day.dt * 1000).toLocaleDateString('en-US', { weekday: 'short' });
+        forecastDiv.innerHTML += `
+            <div class="forecast-item">
+                <p><strong>${date}</strong></p>
+                <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png">
+                <p>${Math.round(day.main.temp)}°C</p>
+            </div>
+        `;
+    });
+}
