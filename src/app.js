@@ -105,4 +105,3 @@ function displaySuggestions(cities) {
 document.addEventListener('click', (e) => {
     if (e.target !== cityInput) suggestionsDiv.innerHTML = '';
 });
-});
