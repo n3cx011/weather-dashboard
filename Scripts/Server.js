@@ -8,24 +8,31 @@ app.use(express.static('public'));
 
 const API_KEY = '618bfef79450e8667416f39850b8fa21';
 
-app.get('/api/weather', async (req, res) => {
-    const city = req.query.city;
-    if (!city) return res.status(400).json({ error: "City is required" });
-
+async function getWeatherData(city) {
     try {
-        const currentRes = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`);
-        
-        const forecastRes = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`);
+        const currentUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
+        const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`;
 
-        res.json({
-            current: currentRes.data,
-            forecast: forecastRes.data
-        });
+        const [currentRes, forecastRes] = await Promise.all([
+            fetch(currentUrl),
+            fetch(forecastUrl)
+        ]);
+
+        if (!currentRes.ok || !forecastRes.ok) {
+            throw new Error("City not found");
+        }
+
+        const currentData = await currentRes.json();
+        const forecastData = await forecastRes.json();
+
+        displayWeather(currentData, forecastData);
     } catch (error) {
-        res.status(404).json({ error: "City not found or API error" });
+        console.error("Error:", error);
+        alert("Failed to fetch weather data. Please check the city name.");
     }
-});
+}
 
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-});
+function displayWeather(current, forecast) {
+    console.log("Current Weather:", current);
+    console.log("5-Day Forecast:", forecast);
+}
