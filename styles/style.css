@@ -10,4 +10,7 @@ button {padding: 10px 20px; background: #007bff; color: white; border: none; bor
 
 .weather-card {padding: 20px; background: #f8f9fa; border-radius: 8px; text-align: center;}
 
+.forecast-container {display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; margin-top: 10px;}
+
+.forecast-item {background: #007bff; color: white; padding: 10px; border-radius: 5px; text-align: center; font-size: 0.8rem;}
 
