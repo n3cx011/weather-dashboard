@@ -2,13 +2,41 @@ body {font-family: sans-serif; background: #f0f2f5; display: flex; justify-conte
 
 .container {width: 100%; max-width: 600px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);}
 
-.search-box {display: flex; gap: 10px; margin-bottom: 20px;}
+.search-box {display: flex; gap: 10px; margin-bottom: 20px; width: 100%;}
 
 input {flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 4px;}
 
 button {padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;}
 
 .weather-card {padding: 15px; background: #e9ecef; border-radius: 4px; text-align: center;}
+
+
+/* This targets the div wrapper we added for the dropdown */
+.search-box > div {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 100%; /* Forces the input to fill its parent div */
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box; /* Prevents padding from adding to width */
+}
+
+button {
+    padding: 0 25px;
+    height: 45px; /* Matches the height of the input */
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
 
 .forecast-container {
     display: flex;
@@ -36,11 +64,14 @@ button {padding: 10px 20px; background: #007bff; color: white; border: none; bor
     text-align: center;
 }
 
+
 .suggestions-list {
     position: absolute;
     top: 100%;
     left: 0;
+
     right: 0;
+
     background: white;
     border: 1px solid #ddd;
     border-top: none;
@@ -48,6 +79,9 @@ button {padding: 10px 20px; background: #007bff; color: white; border: none; bor
     max-height: 200px;
     overflow-y: auto;
     border-radius: 0 0 4px 4px;
+
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
 }
 
 .suggestion-item {

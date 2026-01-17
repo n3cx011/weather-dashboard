@@ -40,3 +40,17 @@ app.get('/api/suggestions', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
+
+// Add this new route to Server.js
+app.get('/api/suggestions', async (req, res) => {
+    const query = req.query.q;
+    if (!query || query.length < 3) return res.json([]);
+
+    try {
+        // Limit to 5 results for the dropdown
+        const response = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${API_KEY}`);
+        res.json(response.data);
+    } catch (error) {
+        res.status(500).json({ error: "Failed to fetch suggestions" });
+    }
+});
