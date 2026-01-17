@@ -8,6 +8,8 @@ async function handleSearch() {
     const city = cityInput.value.trim();
     if (!city) return;
 
+    suggestionsDiv.innerHTML = '';
+
     try {
         // Fetching from OUR backend, not OpenWeather directly
         const response = await fetch(`/api/weather?city=${city}`);
@@ -51,3 +53,48 @@ function displayForecast(data) {
         `;
     });
 }
+
+// --- NEW DROPDOWN LOGIC (Add to bottom of file) ---
+const suggestionsDiv = document.getElementById('suggestions');
+
+cityInput.addEventListener('input', async (e) => {
+    const query = e.target.value.trim();
+    
+    // Only search if the user has typed at least 3 characters
+    if (query.length < 3) {
+        suggestionsDiv.innerHTML = '';
+        return;
+    }
+
+    try {
+        const response = await fetch(`/api/suggestions?q=${query}`);
+        const cities = await response.json();
+        
+        displaySuggestions(cities);
+    } catch (err) {
+        console.error("Error fetching suggestions:", err);
+    }
+});
+
+function displaySuggestions(cities) {
+    suggestionsDiv.innerHTML = '';
+    
+    cities.forEach(city => {
+        const div = document.createElement('div');
+        div.className = 'suggestion-item';
+        // Format: City Name, State (if available), Country
+        div.textContent = `${city.name}${city.state ? ', ' + city.state : ''}, ${city.country}`;
+        
+        div.onclick = () => {
+            cityInput.value = city.name;
+            suggestionsDiv.innerHTML = ''; // Clear dropdown
+            handleSearch(); // Run the weather search immediately
+        };
+        suggestionsDiv.appendChild(div);
+    });
+}
+
+// Close dropdown if user clicks anywhere else
+document.addEventListener('click', (e) => {
+    if (e.target !== cityInput) suggestionsDiv.innerHTML = '';
+});

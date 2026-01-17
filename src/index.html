@@ -10,7 +10,10 @@
         <div class="container">
             <h1>Weather Dashboard</h1>
             <div class="search-box">
-                <input type="text" id="city-input" placeholder="Enter city name...">
+                <div style="position: relative; flex: 1;">
+                    <input type="text" id="city-input" placeholder="Enter city name..." autocomplete="off">
+                    <div id="suggestions" class="suggestions-list"></div>
+                </div>
                 <button id="search-btn">Search</button>
             </div>
             <div id="current-weather" class="weather-card">
