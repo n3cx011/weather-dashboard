@@ -1,3 +1,4 @@
+
 # Weather Dashboard - DevOps Assignment
 
 ## Group Information
@@ -34,3 +35,24 @@ We used a professional Git workflow:
 
 ## Merge Conflict Resolution
 We encountered a conflict in the `README.md` file while merging `feature/ui-design` into `develop`. [cite_start]We resolved it by manually editing the file to include both sections and committing the result
+=======
+#Project Title
+Weather-Dashboard
+
+##Group Information
+**Student 1:** Yasas Premarathne - ITBNM-2313-0061 - Role: DevOps/ Release Manager
+**Student 2:** Uththara Anjalee - ITBNM-2313-0089 - Role: Backend Developer
+**Student 3:** Kaumini Kulasooriya - ITBNM-2313-0088 - Role: Frontend Developer
+
+##Project Description
+
+
+##Live Deployment
+**Live URL**
+
+##Technologies Used
+-HTML5, CSS3, JavaScript
+-[frameworks]
+-Github Actions
+-[Deployment Platform Name]
+
