@@ -4,19 +4,15 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-// Middleware
 app.use(express.static('public')); 
 
-// API Key
 const API_KEY = '618bfef79450e8667416f39850b8fa21';
 
-// Route for current weather and forecast
 app.get('/api/weather', async (req, res) => {
     const city = req.query.city;
     if (!city) return res.status(400).json({ error: "City is required" });
 
     try {
-        // ERROR FIX 1 & 2: Added backticks and quotes for the URLs
         const currentRes = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`);
         
         const forecastRes = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`);
@@ -30,7 +26,6 @@ app.get('/api/weather', async (req, res) => {
     }
 });
 
-// ERROR FIX 3: Added backticks for the console log string
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
