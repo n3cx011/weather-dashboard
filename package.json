@@ -1,0 +1,26 @@
+{
+  "name": "weather-dashboard",
+  "version": "1.0.0",
+  "description": "- **Student 1:** Yasas Premarathne - ITBNM-2313-0061 - Role: DevOps/Release Manager \r - **Student 2:** Anjalee Herath - ITBNM-2313-0089 - Role: Backend Developer \r - **Student 3:** Kaumini Kulasooriya - ITBNM-2313-0088 - Role: Frontend Developer",
+  "main": "Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n3cx011/weather-dashboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/n3cx011/weather-dashboard/issues"
+  },
+  "homepage": "https://github.com/n3cx011/weather-dashboard#readme",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "express": "^5.2.1"
+  }
+}
