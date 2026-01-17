@@ -6,22 +6,28 @@
 - **Student 3:** Kaumini Kulasooriya - ITBNM-2313-0088 - Role: Frontend Developer 
 
 ## Project Description
-A responsive Weather Dashboard that fetches real-time data from OpenWeatherMap API, displaying current conditions and a 5-day forecast.
-
-## Technologies Used
-- HTML5, CSS3, JavaScript
-- [Insert Frameworks here, e.g., React/Vue]
-- GitHub Actions (CI/CD)
-- [Insert Deployment Platform, e.g., Vercel/Netlify]
-
-## Build Status
-![CI Pipeline](https://github.com/[username]/[repo]/workflows/CI%20Pipeline/badge.svg)
-![Deploy](https://github.com/[username]/[repo]/workflows/Deploy%20to%20Production/badge.svg) 
+This application is a responsive Weather Dashboard designed to provide real-time weather updates and a 5-day forecast for any city worldwide. It integrates with the OpenWeatherMap API to fetch current temperature, conditions, humidity, and wind speed.
 
 ## Live Deployment
-**Live URL:** [Paste your URL here] 
+�**Live URL:** https://weather-dashboard-chi-one.vercel.app/ 
+
+## Technologies Used
+- Frontend - HTML5, CSS3, JavaScript
+- NodeJs
+- GitHub Actions (CI/CD)
+- Deployment: Vercel
+- API: OpenWeatherMap API
+
+## Features
+-Real-time Search: Users can search for current weather data by city name.
+-5-Day Forecast: Displays weather readings specifically filtered for 12:00 PM for the upcoming five days.
+-Responsive UI: Fully functional and optimized for mobile, tablet, and desktop views.
+
+## Build Status
+
 
 ## Branch Strategy
+We implemented the following branching strategy
 - `main`: Production-ready code (Protected) 
 - `develop`: Integration branch 
 - `feature/**`: Individual feature branches 
