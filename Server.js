@@ -13,9 +13,9 @@ app.get('/api/weather', async (req, res) => {
     if (!city) return res.status(400).json({ error: "City is required" });
 
     try {
-        const currentRes = await axios.get('https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}');
+        const currentRes = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`);
 
-        const forecastRes = await axios.get('https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}');
+        const forecastRes = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`);
 
         res.json({
             current: currentRes.data,
