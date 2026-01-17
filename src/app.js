@@ -6,16 +6,23 @@ cityInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSea
 
 async function handleSearch() {
     const city = cityInput.value.trim();
+    const apiKey = '618bfef79450e8667416f39850b8fa21'; 
     if (!city) return;
 
     try {
-        // Fetching from OUR backend, not OpenWeather directly
-        const response = await fetch(`/api/weather?city=${city}`);
-        if (!response.ok) throw new Error('City not found');
-        
-        const data = await response.json();
-        displayCurrent(data.current);
-        displayForecast(data.forecast);
+        // 1. Fetch CURRENT weather
+        const currentRes = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`);
+        if (!currentRes.ok) throw new Error('City not found');
+        const currentData = await currentRes.json();
+
+        // 2. Fetch 5-DAY FORECAST (Required for Option C)
+        const forecastRes = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`);
+        if (!forecastRes.ok) throw new Error('Forecast data not available');
+        const forecastData = await forecastRes.json();
+
+        // 3. Display the data
+        displayCurrent(currentData);
+        displayForecast(forecastData);
     } catch (error) {
         alert(error.message);
     }
