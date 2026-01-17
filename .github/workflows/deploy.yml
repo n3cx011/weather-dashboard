@@ -14,3 +14,7 @@ jobs:
           vercel-token: ${{ secrets.PkSPfGpooXTrPFMX62UwSUxE }}
           vercel-org-id: ${{ secrets.pLFKeD5jmZQRNRErDc5suoU0 }}
           vercel-project-id: ${{ secrets.prj_RK8GoBiKH3UkyWR9dBOkt8ody2yJ }}
+
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
