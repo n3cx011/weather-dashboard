@@ -19,9 +19,9 @@ This application is a responsive Weather Dashboard designed to provide real-time
 - API: OpenWeatherMap API
 
 ## Features
--Real-time Search: Users can search for current weather data by city name.
--5-Day Forecast: Displays weather readings specifically filtered for 12:00 PM for the upcoming five days.
--Responsive UI: Fully functional and optimized for mobile, tablet, and desktop views.
+- Real-time Search: Users can search for current weather data by city name.
+- 5-Day Forecast: Displays weather readings specifically filtered for 12:00 PM for the upcoming five days.
+- Responsive UI: Fully functional and optimized for mobile, tablet, and desktop views.
 
 ## Build Status
 ![CI Pipeline](https://github.com/n3cx011/weather-dashboard/workflows/CI%20Pipeline/badge.svg)
