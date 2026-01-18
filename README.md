@@ -81,27 +81,27 @@ npm install
 npm run dev
 
 # Deployment Process 
-Our project utilizes GitHub Actions to automate the integration and deployment process through two primary workflows :
+Our project utilizes GitHub Actions to automate the integration and deployment process through two primary workflows:
 
 1. Continuous Integration (CI)
--The CI Pipeline (ci.yml) is triggered every time a team member pushes code to any branch (main, develop, or feature/*) or creates a Pull Request .
+-The CI Pipeline (ci.yml) is triggered every time a team member pushes code to any branch (main, develop, or feature/*) or creates a Pull Request.
 
--Checkout: The "robot" downloads the latest code from the repository .
+-Checkout: The "robot" downloads the latest code from the repository.
 
--Environment Setup: It installs Node.js version 18 .
+-Environment Setup: It installs Node.js version 18.
 
--Installation: It runs npm install to gather all necessary project libraries .
+-Installation: It runs npm install to gather all necessary project libraries.
 
--Validation: It runs a linter and build check to ensure there are no syntax errors or breaking changes before the code is merged .
+-Validation: It runs a linter and build check to ensure there are no syntax errors or breaking changes before the code is merged.
 
 2. Continuous Deployment (CD)
 -The Deployment Pipeline (deploy.yml) is the final step that makes the website live.
 
--Trigger: This workflow only runs when code is successfully pushed or merged into the main branch .
+-Trigger: This workflow only runs when code is successfully pushed or merged into the main branch.
 
--Authentication: It uses stored GitHub Secrets (VERCEL_TOKEN, ORG_ID, PROJECT_ID) to securely connect to our Vercel account .
+-Authentication: It uses stored GitHub Secrets (VERCEL_TOKEN, ORG_ID, PROJECT_ID) to securely connect to our Vercel account.
 
--Automatic Update: Once the checks pass, Vercel automatically builds the new version and updates the live URL (weather-dashboard-chi-one.vercel.app) instantly
+-Automatic Update: Once the checks pass, Vercel automatically builds the new version and updates the live URL (weather-dashboard-chi-one.vercel.app) instantly.
 
 # Challenges Faced 
 
@@ -109,8 +109,8 @@ Our project utilizes GitHub Actions to automate the integration and deployment p
 
 -Vercel Root Directory Configuration: Our deployment initially showed a 404: NOT_FOUND error because Vercel was looking for files in the root folder instead of the src/ directory.
 
--Merge Conflict Resolution: To meet assignment requirements, we intentionally edited the same line in the README.md, which required us to manually resolve the conflict in the code editor before merging to develop .
+-Merge Conflict Resolution: To meet assignment requirements, we intentionally edited the same line in the README.md, which required us to manually resolve the conflict in the code editor before merging to develop.
 
--GitHub Actions Secrets: Setting up the deploy.yml was challenging as it required the correct mapping of VERCEL_TOKEN, ORG_ID, and PROJECT_ID within GitHub Secrets to allow the automation robot to communicate with Vercel .
+-GitHub Actions Secrets: Setting up the deploy.yml was challenging as it required the correct mapping of VERCEL_TOKEN, ORG_ID, and PROJECT_ID within GitHub Secrets to allow the automation robot to communicate with Vercel.
 
--Git Tracking Issues: Some files initially appeared with a green "U" (Untracked) icon in the editor, requiring us to properly use git add and git commit to ensure all source code was pushed to the repository .
+-Git Tracking Issues: Some files initially appeared with a green "U" (Untracked) icon in the editor, requiring us to properly use git add and git commit to ensure all source code was pushed to the repository.
